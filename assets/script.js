@@ -1,13 +1,12 @@
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
-// var startButton = document.querySelector(#startTimerButton)
+var startButton = document.querySelector(#startQuiz);
 // var startGame = document.querySelector(#startScreen)
 // var score = 0
 
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
-var quizQuestions = document.querySelector(#quizQuestions);
+var quizQuestionsEl = document.querySelector(#quizQuestions);
+var answersEl = document.querySelector(#answers);
+var timerEl = document.querySelector(#timer);
 
 
 
@@ -125,42 +124,32 @@ submitButton.addEventListener('click', showResults);
 //   'Some say the world will end in 🔥, Some say in ice. From what I’ve tasted of desire, I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate. To say that for destruction ice, Is also great, And would suffice.';
 // var words = message.split(' ');
 
-// function countdown() {
-//   var timeLeft = 5;
+function countdown() {
+  var timeLeft = 75;
+  // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  var timeInterval = setInterval(function () {
+    timeLeft --;
+    // console.log(timeLeft);
+    timerEl.textContent = timeLeft + " seconds left";
+    if (timeLeft <= 0){
+      clearInterval(timeInterval);
+      timerEl.textContent = ""
+      displayMessage()
+    }
+  }, 1000);
+}
 
-//   // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-//   var timeInterval = setInterval(function () {
-//     timeLeft --;
-//     // console.log(timeLeft);
-//     timerEl.textContent = timeLeft + " seconds left";
+function displayMessage(){
 
-//     if (timeLeft <= 0){
-//       clearInterval(timeInterval);
-//       timerEl.textContent = ""
-//       displayMessage()
-//     }
-//   }, 1000);
-// }
+}
 
-// // Displays the message one word at a time
-// function displayMessage() {
-//   var wordCount = 0;
 
-//   // Uses the `setInterval()` method to call a function to be executed every 1000 milliseconds
-//   var msgInterval = setInterval(function () {
-//     // If there are no more words left in the message
-//     if (words[wordCount] === undefined) {
-//       // Use `clearInterval()` to stop the timer
-//       clearInterval(msgInterval);
-//     } else {
-//       // Display one word of the message
-//       mainEl.textContent = words[wordCount];
-//       wordCount++;
-//     }
-//   }, 1000);
-// }
+function startQuestion() {
+  quizQuestions = questions[currentQuestionIndex];
+}
 
-// countdown();
+
+countdown();
 
 
 // // from tom's slack
