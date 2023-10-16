@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz!</title>
+    <link rel="stylesheet" href="./assets/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>  
+
+    <div class="main-container">
+        <header>
+            <div>
+                <!-- high scores -->
+                <button>
+                    View High Scores
+                </button>
+            </div>
+
+            <div>
+                <!-- timer -->
+                <p>
+                    Time: <span id="timer">0</span>
+                </p>
+            </div>
+        </header>
+    </div>
+
+    <main class="quiz">                   
+        <div id="startScreen">
+            <h1> Coding Quiz Challenge </h1>
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers till penalize your score/time by ten seconds!</p>
+        </div>
+
+        <div>
+            <button id="startQuiz">Start Quiz</button>
+        </div>
+
+        <div class="hide" id="quizQuestions">
+            <h1 id="fullQuestion"></h1>
+            <div id="answers"></div>
+        </div>
+<!--         
+        
+            
+            <button id="startTimerButton" data-start="">Start Quiz</button>
+        </section>
+        
+
+        <button id="addTime" class="button">Add 5 Seconds</button>
+        <button id="stopTimer" class="button">Stop and Clear Timer!</button> -->
+
+    </main>
+</body>
+</html>
+<script src="./assets/script.js"></script>
+
+
