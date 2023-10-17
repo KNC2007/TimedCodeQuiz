@@ -10,51 +10,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
-<body>  
+<body> 
+    <div class="main-container"> 
+        <!-- header -->
+        <div class="header">
+            <header>
+                <div>
+                    <!-- high scores -->
+                    <button id="viewHighScores">
+                        View High Scores
+                    </button>
+                </div>
 
-    <div class="main-container">
-        <header>
-            <div>
-                <!-- high scores -->
-                <button>
-                    View High Scores
-                </button>
+                <div id="viewTimer">
+                    <!-- timer -->
+                    <p>
+                        Time: <span id="timer">75 seconds</span>
+                    </p>
+                </div>
+            </header>
+        </div>
+
+        <!-- quiz questions section -->
+        <main class="quiz">
+
+            <!-- start screen of quiz -->
+            <div id="startScreen">
+                <h1> Coding Quiz Challenge </h1>
+                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers till penalize your score/time by ten seconds!</p>
+                <button id="startQuiz">Start Quiz</button>
             </div>
 
-            <div>
-                <!-- timer -->
-                <p>
-                    Time: <span id="timer">0</span>
-                </p>
+            <!-- questions and answer selections section -->
+            <div class="hide" id="quizQuestions">
+                <h1 id="fullQuestion"></h1>
+                <div id="answers"></div>
             </div>
-        </header>
+
+            <!-- enter your initials section to save score -->
+            <div class="hide" id="quizEnd">
+                <h1>All done!</h1>
+                <p>Your final score is: <span id="finalScore"></span></p>
+                <p>Enter initials: <input id="initials" type="text" maxlength="4"/></p>
+                <button id="saveScoreBtn">Submit</button>
+            </div>
+
+        </main>
     </div>
-
-    <main class="quiz">                   
-        <div id="startScreen">
-            <h1> Coding Quiz Challenge </h1>
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers till penalize your score/time by ten seconds!</p>
-        </div>
-
-        <div>
-            <button id="startQuiz">Start Quiz</button>
-        </div>
-
-        <div class="hide" id="quizQuestions">
-            <h1 id="fullQuestion"></h1>
-            <div id="answers"></div>
-        </div>
-<!--         
-        
-            
-            <button id="startTimerButton" data-start="">Start Quiz</button>
-        </section>
-        
-
-        <button id="addTime" class="button">Add 5 Seconds</button>
-        <button id="stopTimer" class="button">Stop and Clear Timer!</button> -->
-
-    </main>
 </body>
 </html>
 <script src="./assets/script.js"></script>

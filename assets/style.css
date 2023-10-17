@@ -3,16 +3,137 @@
     padding: 0;
     box-sizing: border-box; 
     font-family: 'Roboto', sans-serif;
+    background-color: #E0DFE1;
+    
 }
 
 
 
 .main-container {
-    background-color: #E0DFE1;
     font-size: 20px;
-    color: black
+    color: black;
+    justify-content: center;
+    margin: 1%;
+    padding: 1%;
 }
 
-.button {
+
+
+header {
+    display: flex;
+    flex-direction: block;
+    text-align: center;
+}
+
+
+.quiz {
+    border: rgb(226, 43, 134) solid 5px;
+    position: absolute;
+    margin: 7%;
+
+}
+
+#viewTimer {
+    display: block;
+    height: 100%;
+    width: 250px;
+    margin-left: auto;
+    text-align: center;
+    border: 2px solid rgb(226, 43, 134);
+}
+
+/* includes quiz title on start screen and each QUESTION and end screen to enter initials for score */
+h1, p {
+    padding: 3%;
+    text-align: center;
+}
+
+#startScreen {
+
+}
+
+/* start quiz button */
+#startQuiz {
+    text-align: center;
+    background-color: rgba(226, 78, 152, 0.527);
+    font-size: larger;
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    border: 2px solid;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom: 10px;
+    cursor: help;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#viewHighScores {
+    text-align: center;
+    background-color: rgba(226, 78, 152, 0.527);
+    font-size: larger;
+    display: inline-block;
+    padding: 15px 32px;
+    text-decoration: none;
+    border: 2px solid ;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+
+.hide {
+    display: none;
+}
+
+#quizQuestions {
+
+}
+
+#fullQuestion {
+
+}
+
+.choice {
+    
+}
+
+#answers {
+    text-align: center;
+    background-color: rgba(226, 78, 152, 0.527);
+    font-size: larger;
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    border: 2px solid;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    margin-left: auto;
+    margin-right:auto;
+    cursor: help;
+    /* make buttons on top of each other and provide enough space so hover shadow works */
+}
+
+#finalScore {
+
+}
+
+
+#initials {
+
+}
+
+#saveScoreBtn {
+
+}
+
+#timer {
+
+}
+
+#quizEnd {
 
 }

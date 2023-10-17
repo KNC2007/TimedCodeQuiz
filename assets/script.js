@@ -1,12 +1,13 @@
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
-var startButton = document.querySelector(#startQuiz);
-// var startGame = document.querySelector(#startScreen)
+var startButton = document.querySelector("#startQuiz");
+// var startQuiz = document.querySelector(#startScreen)
 // var score = 0
 
-var quizQuestionsEl = document.querySelector(#quizQuestions);
-var answersEl = document.querySelector(#answers);
-var timerEl = document.querySelector(#timer);
+var quizQuestionsEl = document.querySelector("#quizQuestions");
+var answersEl = document.querySelector("#answers");
+var timerEl = document.querySelector("#timer");
+var questionIndex = 0;
 
 
 
@@ -14,11 +15,11 @@ var timerEl = document.querySelector(#timer);
 var quizQuestions = [ 
   {
     question: "Arrays in JavaScript are defined by which of the following statements?",
-    answers: {
-      a: "It is an ordered list of values.",
-      b: "It is an ordered list of objects.",
-      c: "It is an ordered list of string.",
-      d: "It is an ordered list of functions.",
+    answers: [{'a': 'It is an ordered list of values.'}, 
+    {'b': 'It is an ordered list of objects.'}, 
+    {'c': 'It is an ordered list of string.'},
+    {'d': 'It is an ordered list of functions.'}]
+      
     },
     correctAnswer: "a"
   },
@@ -75,7 +76,7 @@ var quizQuestions = [
 ];
 
 
-// function begin(event){
+// function startGame(event){
 //   if(event.target.getAttribute("data-start") === "something"){
 
 //   }
@@ -90,12 +91,53 @@ var quizQuestions = [
 
 // THEN a timer starts and I am presented with a question
 
-
-startQuiz();
-
-submitButton.addEventListener('click', showResults);
+startButton.addEventListener("click", startQuiz);
 
 
+function startQuiz() {
+  var startScreen = document.getElementById("startScreen")
+  startScreen.setAttribute("class", "hide");
+  quizQuestionsEl.removeAttribute("class");
+  countdown();
+  getNextQuestion();
+}
+
+// timer start
+// show the first question
+// get the question right
+// get the question wrong
+
+function countdown() {
+  var counter = 75;
+  // var timeLeft = 75;
+  var timeInterval = setInterval(() => {
+    console.log(counter)
+    counter--;
+    // console.log(timeLeft);
+    timerEl.textContent = counter + " seconds left";
+    if (counter <= 0){
+      clearInterval(timeInterval);
+      timerEl.textContent = "Sorry, out of time!"
+      displayMessage()
+    }
+  }, 1000);
+}
+
+
+function getNextQuestion() {
+  var currentQuestion = quizQuestions[questionIndex];
+  var questionTitle = document.getElementById("fullQuestion");
+  questionTitle.textContent = currentQuestion.question;
+  answersEl.innerHTML = "";
+  for (let i = 0; i < currentQuestion.answers.length; i++) {
+    const answerChoice = currentQuestion.answers[i];
+    const choiceButton = document.createElement("button");
+    choiceButton.setAttribute("class", "choice");
+    choiceButton.textContent = answerChoice;
+    answersEl.appendChild(choiceButton);    
+  }
+
+}
 
 
 // // WHEN I answer a question
@@ -115,7 +157,6 @@ submitButton.addEventListener('click', showResults);
 
 
 
-
 // // timer
 // var timerEl = document.getElementById('countdown');
 // var mainEl = document.getElementById('main');
@@ -124,104 +165,16 @@ submitButton.addEventListener('click', showResults);
 //   'Some say the world will end in 🔥, Some say in ice. From what I’ve tasted of desire, I hold with those who favor fire. But if it had to perish twice, I think I know enough of hate. To say that for destruction ice, Is also great, And would suffice.';
 // var words = message.split(' ');
 
-function countdown() {
-  var timeLeft = 75;
-  // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function () {
-    timeLeft --;
-    // console.log(timeLeft);
-    timerEl.textContent = timeLeft + " seconds left";
-    if (timeLeft <= 0){
-      clearInterval(timeInterval);
-      timerEl.textContent = ""
-      displayMessage()
-    }
-  }, 1000);
-}
+
 
 function displayMessage(){
 
 }
 
 
-function startQuestion() {
-  quizQuestions = questions[currentQuestionIndex];
-}
 
+// countdown();
 
-countdown();
+// startQuiz();
 
-
-// // from tom's slack
-// <!DOCTYPE html>
-// <html lang="en">
-// ​
-// <head>
-//     <meta charset="UTF-8">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <title>Document</title>
-// </head>
-// ​
-// <body>
-//     <div>Press Start to begin!
-//         <ul id="timer">
-//         </ul>
-//     </div>
-//     <button id="startTimer" class="button">Start</button>
-//     <button id="addTime" class="button">Add 5 Seconds</button>
-//     <button id="stopTimer" class="button">Stop and Clear Timer!</button>
-//     <script>
-// ​
-//         // what are these called?
-//         var timerEL = document.querySelector("#timer");
-//         var startBTN = document.querySelector("#startTimer");
-//         var addBTN = document.querySelector("#addTime");
-//         var stopBNT = document.querySelector("#stopTimer");
-// ​
-//         // what is the scope of these variables and why?
-//         var timeLeft;
-//         var countdown;
-// ​
-//         function startTimer() {
-//             // am I declaring a new variable?
-//             timeLeft = 10;
-// ​
-//             // What is setInterval and how is it different than setTimeout? 
-//             // what do we call the "function()" inside the setInterval?
-//             countdown = setInterval(function () {
-//                 // CREATE
-//                 var liEL = document.createElement("li");
-//                 // MODIFY
-//                 liEL.textContent = timeLeft;
-//                 // APPEND
-//                 timerEL.append(liEL);
-// ​
-//                 // decrease our timer by 1
-//                 timeLeft--;
-// ​
-//                 // if our timer is less than 0, stop the timer!
-//                 if (timeLeft < 0) {
-//                     clearInterval(countdown)
-//                 }
-//                 // How often does our interval run?
-//             }, 1000);
-//         }
-// ​
-//         function addTime() {
-//             timeLeft += 5;
-//         }
-// ​
-//         // what does this function do? What does "innerHTML" do when set to an empty string?
-//         function stopTimer() {
-//             timerEL.innerHTML = ""
-//             clearInterval(countdown)
-//         }
-// ​
-//         // What happens when you click buttons?
-//         startBTN.addEventListener("click", startTimer);
-//         addBTN.addEventListener("click", addTime);
-//         stopBNT.addEventListener("click", stopTimer);
-//     </script>
-// </body>
-// ​
-// </html>
+startButton.addEventListener('click', startQuiz);
