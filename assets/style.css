@@ -48,9 +48,9 @@ h1, p {
     text-align: center;
 }
 
-#startScreen {
+/* #startScreen {
 
-}
+} */
 
 /* start quiz button */
 #startQuiz {
@@ -89,19 +89,8 @@ h1, p {
     display: none;
 }
 
-#quizQuestions {
-
-}
-
-#fullQuestion {
-
-}
 
 .choice {
-    
-}
-
-#answers {
     text-align: center;
     background-color: rgba(226, 78, 152, 0.527);
     font-size: larger;
@@ -113,11 +102,12 @@ h1, p {
     transition-duration: 0.4s;
     margin-left: auto;
     margin-right:auto;
+    margin-bottom: 10px;
     cursor: help;
     /* make buttons on top of each other and provide enough space so hover shadow works */
 }
 
-#finalScore {
+/* #finalScore {
 
 }
 
@@ -135,5 +125,13 @@ h1, p {
 }
 
 #quizEnd {
+
+} */
+
+/* #quizQuestions {
+
+}
+
+#fullQuestion {
 
 }
