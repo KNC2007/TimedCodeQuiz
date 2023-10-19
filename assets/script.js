@@ -1,54 +1,54 @@
 
 var startButton = document.querySelector("#startQuiz");
-// var startQuiz = document.querySelector(#startScreen)
 // var score = 0
 var counter = 75;
 var quizQuestionsEl = document.querySelector("#quizQuestions");
 var answersEl = document.querySelector("#answers");
 var timerEl = document.querySelector("#timer");
 var questionIndex = 0;
+var answerFeedback = document.querySelector("#rightOrWrong");
 
 var quizQuestions = [ 
   {
     question: "Arrays in JavaScript are defined by which of the following statements?",
     answers: ['It is an ordered list of values.', 'It is an ordered list of objects.', 'It is an ordered list of string.', 'It is an ordered list of functions.'],
   
-    correctAnswer: 0
+    correctAnswer: 'It is an ordered list of values.'
   },
 
   {
     question: "What is JavaScript?",
-    answers: [{'a': 'JavaScript is a scripting language used to make the website interactive.'}, {'b': 'JavaScript is an assembly language used to make the website interactive.'}, {'c': 'JavaScript is a compiled language used to make the website interactive.'}, {'d': 'None of the mentioned.'}],
+    answers: ['JavaScript is a scripting language used to make the website interactive.', 'JavaScript is an assembly language used to make the website interactive.', 'JavaScript is a compiled language used to make the website interactive.', 'None of the mentioned.'],
   
-    correctAnswer: "a"
+    correctAnswer: 'JavaScript is a scripting language used to make the website interactive.'
   },
 
   {
     question: "Which of the following is correct about JavaScript?",
-    answers: [{'a': 'JavaScript is an Object-Based language.'}, {'b': 'JavaScript is Assembly-language.'}, {'c': 'JavaScript is an Object-Oriented language.'}, {'d': 'JavaScript is a High-level language.'}],
+    answers: ['JavaScript is an Object-Based language.', 'JavaScript is Assembly-language.', 'JavaScript is an Object-Oriented language.', 'JavaScript is a High-level language.'],
 
-    correctAnswer: "a"
+    correctAnswer: 'JavaScript is an Object-Based language.'
   },
 
   {
     question: "Which of the following object is the main entry point to all client-side JavaScript features and APIs?",
-    answers: [{'a': 'Position'}, {'b': 'Window'}, {'c': 'Standard'}, {'d': 'Location'}],
+    answers: ['Position', 'Window', 'Standard', 'Location'],
 
-    correctAnswer: "b"
+    correctAnswer: 'Window'
   },
 
   {
     question: "Which of the following can be used to call a JavaScript Code Snippet?",
-    answers: [{'a': 'Function/Method'}, {'b': 'Preprocessor'}, {'c': 'Triggering Event'}, {'d': 'RMI'}],
+    answers: ['Function/Method', 'Preprocessor', 'Triggering Event', 'RMI'],
 
-    correctAnswer: "a"
+    correctAnswer: 'Function/Method'
   },
 
   {
     question: "Where must the script tag must be placed?",
-    answers: [{'a': 'the head tag'}, {'b': 'the head or body'}, {'c': 'the title or head'}, {'d': 'after the body tag'}],
+    answers: ['the head tag', 'the head or body', 'the title or head', 'after the body tag'],
     
-    correctAnswer: "b"
+    correctAnswer: 'the head or body'
   }
 ];
 
@@ -99,9 +99,9 @@ function getNextQuestion() {
     console.log(answerChoice);
     const choiceButton = document.createElement("button");
     choiceButton.setAttribute("class", "choice");
-    choiceButton.setAttribute("data-correct", currentQuestion.correctAnswer);
-    choiceButton.setAttribute("data-index", i);
-    choiceButton.textContent = answerChoice;
+    choiceButton.setAttribute("value", answerChoice);
+    // choiceButton.setAttribute("data-index", i);
+    choiceButton.textContent = i + 1 + ". " + answerChoice;
     answersEl.appendChild(choiceButton);    
   }
 }
@@ -113,33 +113,44 @@ answersEl.addEventListener("click", checkAnswer);
 
 function checkAnswer(event) {
   console.log(event.target);
-  if ("data-index" === "data-correct") {
-    alert("Correct!");
-    getNextQuestion();
+  var btnEl = event.target;
+  if (!btnEl.matches(".choice")) {
+    return;
+  }
+  if (btnEl.value !== quizQuestions[questionIndex].correctAnswer) {
+    counter-=10;
+    answerFeedback.removeAttribute("class");
+    answerFeedback.textContent = "Wrong!";
+    timerEl.textContent = counter + " seconds left";
   // // WHEN I answer a question incorrectly
   // // THEN time is subtracted from the clock  
   } else {
-    alert("Wrong!");
-    counter = counter-=10;
-    timerEl.textContent = counter + " seconds left";
-    getNextQuestion();
+    answerFeedback.removeAttribute("class");
+    answerFeedback.textContent = "Correct!";
   }
+  // // WHEN all questions are answered or the timer reaches 0
+  // // THEN the game is over
+questionIndex++;
+if (counter <= 0 || questionIndex === quizQuestions.length) {
+  endQuiz();
+  } else {
+  getNextQuestion();
+}
 }
 
-
-
-
-// // WHEN all questions are answered or the timer reaches 0
-// // THEN the game is over
-
-
-
+ 
 
 // // WHEN the game is over
 // // THEN I can save my initials and score
 
 
-
+function endQuiz() {
+  quizQuestionsEl.innerHTML = "";
+  var highScores = document.getElementById("quizEnd");
+  highScores.removeAttribute("class");
+  
+}
+  
 
 
 

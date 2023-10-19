@@ -4,6 +4,7 @@
     box-sizing: border-box; 
     font-family: 'Roboto', sans-serif;
     background-color: #E0DFE1;
+    color: black;
     
 }
 
@@ -28,9 +29,13 @@ header {
 
 .quiz {
     border: rgb(226, 43, 134) solid 5px;
-    position: absolute;
     margin: 7%;
-
+    display: flex;
+    flex-direction: block;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 30px;
 }
 
 #viewTimer {
@@ -65,11 +70,11 @@ h1, p {
     transition-duration: 0.4s;
     margin-left: auto;
     margin-right:auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     cursor: help;
 }
 
-.button:hover {
+#startQuiz:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
@@ -102,9 +107,27 @@ h1, p {
     transition-duration: 0.4s;
     margin-left: auto;
     margin-right:auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     cursor: help;
-    /* make buttons on top of each other and provide enough space so hover shadow works */
+    width: 50%;
+}
+
+.choice:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#rightOrWrong {
+    border-top: solid orangered 4px;
+    color: black;
+    margin-top: 20px;
+    font-size: larger;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    
+
+
 }
 
 /* #finalScore {

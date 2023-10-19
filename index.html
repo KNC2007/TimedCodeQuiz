@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz!</title>
-    <link rel="stylesheet" href="./assets/style.css"/>
+    <link rel="stylesheet" href="./assets/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
-<body> 
-    <div class="main-container"> 
+<body>
+    <div class="main-container">
         <!-- header -->
         <div class="header">
             <header>
@@ -37,7 +38,8 @@
             <!-- start screen of quiz -->
             <div id="startScreen">
                 <h1> Coding Quiz Challenge </h1>
-                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers till penalize your score/time by ten seconds!</p>
+                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                    answers till penalize your score/time by ten seconds!</p>
                 <button id="startQuiz">Start Quiz</button>
             </div>
 
@@ -47,18 +49,24 @@
                 <div id="answers"></div>
             </div>
 
-            <!-- enter your initials section to save score -->
+            <!-- quiz end and enter high score -->
             <div class="hide" id="quizEnd">
                 <h1>All done!</h1>
                 <p>Your final score is: <span id="finalScore"></span></p>
-                <p>Enter initials: <input id="initials" type="text" maxlength="4"/></p>
+                <p>Enter initials: <input id="initials" type="text" maxlength="4" /></p>
                 <button id="saveScoreBtn">Submit</button>
             </div>
 
         </main>
+
+        <section>
+            <div class="hide"  id="rightOrWrong"></div>
+        </section>
+
+
+        
     </div>
 </body>
+
 </html>
 <script src="./assets/script.js"></script>
-
-
