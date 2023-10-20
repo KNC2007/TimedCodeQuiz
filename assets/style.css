@@ -117,7 +117,6 @@ h1, p {
 }
 
 #rightOrWrong {
-    border-top: solid orangered 4px;
     color: black;
     margin-top: 20px;
     font-size: larger;
@@ -125,9 +124,7 @@ h1, p {
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
-    
-
-
+    border-top: solid orangered 4px;
 }
 
 /* #finalScore {
