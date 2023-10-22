@@ -6,16 +6,18 @@ var answersEl = document.querySelector("#answers");
 var timerEl = document.querySelector("#timer");
 var questionIndex = 0;
 var answerFeedback = document.querySelector("#rightOrWrong");
+var answerFeedbackLine = document.querySelector(".feedbackSection");
 var timeInterval = null;
 var highScores = [];
 var saveScoreButton = document.querySelector("#saveScoreBtn");
-var fullScreen = document.querySelector(".main-container");
+var fullScreen = document.querySelector(".fullTest");
 var finalScoresScreen = document.querySelector("#highScoresScreen");
 var viewAllScoresList = document.querySelector("#viewHighScoresList");
 var backBtn = document.querySelector("#goBackButton");
 var clearBtn = document.querySelector("#clearHighScoresButton");
 var headerScoresBtn = document.querySelector("#viewHighScoresBtn");
-var topHeader = document.querySelector("#header");
+var topHeader = document.querySelector(".header");
+var takeQuiz = document.querySelector(".quiz");
 
 var quizQuestions = [ 
   {
@@ -180,19 +182,17 @@ function saveHighScores () {
 
 
 function renderHighScores() {
-  // quizQuestionsEl.innerHTML = "";
-  // topHeader.innerHTML = "";
+  takeQuiz.innerHTML = "";
+  topHeader.innerHTML = "";
+  answerFeedbackLine.innerHTML = "";
+  fullScreen.innerHTML = "";
   finalScoresScreen.removeAttribute("class");
-  // quizQuestionsEl.setAttribute("class", "hide");
   var storedScores = JSON.parse(localStorage.getItem('highScores'));
   if (storedScores !== null) {
     highScores = storedScores;    
   }
 
-  // if(storedScores !== null) {
-  //   highScores = storedScores
-  // }
-  console.log(highScores);
+  // console.log(highScores);
 
   for (var i = 0; i < highScores.length; i++) {
     var singleScore = highScores[i];
@@ -222,6 +222,7 @@ clearBtn.addEventListener("click", clearLocalStorage);
 
 function clearLocalStorage() {
   localStorage.clear();
+  startQuiz();
 }
 
 

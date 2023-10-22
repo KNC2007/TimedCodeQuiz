@@ -114,6 +114,7 @@ h1, p {
 }
 
 #rightOrWrong {
+    border-top: solid orangered 4px;
     color: black;
     margin-top: 20px;
     font-size: larger;
@@ -121,7 +122,6 @@ h1, p {
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
-    border-top: solid orangered 4px;
 }
 
 #saveScoreBtn {
@@ -178,3 +178,10 @@ li {
     cursor: help;
     width: 20%;
 }
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
