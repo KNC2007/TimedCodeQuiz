@@ -9,6 +9,13 @@ var answerFeedback = document.querySelector("#rightOrWrong");
 var timeInterval = null;
 var highScores = [];
 var saveScoreButton = document.querySelector("#saveScoreBtn");
+var fullScreen = document.querySelector(".main-container");
+var finalScoresScreen = document.querySelector("#highScoresScreen");
+var viewAllScoresList = document.querySelector("#viewHighScoresList");
+var backBtn = document.querySelector("#goBackButton");
+var clearBtn = document.querySelector("#clearHighScoresButton");
+var headerScoresBtn = document.querySelector("#viewHighScoresBtn");
+var topHeader = document.querySelector("#header");
 
 var quizQuestions = [ 
   {
@@ -86,10 +93,6 @@ function countdown() {
       clearInterval(timeInterval);
       timerEl.textContent = "Sorry, out of time!"
       endQuiz();
-    // if (questionIndex === quizQuestions.length) {
-    //   clearInterval(timeInterval);
-    //   endQuiz();
-    // }
     }
   }, 1000);
 }
@@ -155,18 +158,14 @@ function endQuiz() {
   quizQuestionsEl.innerHTML = "";
   var endScreenEl = document.getElementById("quizEnd");
   endScreenEl.removeAttribute("class");
-  var finalScoreEl = document.getElementById(finalScore);
-  finalScoreEl.textContent = timerEl;
-
-
-  
-
+  var finalScoreEl = document.getElementById("finalScore");
+  finalScoreEl.textContent = counter;
 }
 
 
 function saveHighScores () {
   var lastHighScore = JSON.parse(localStorage.getItem('highScores'));
-  if (lastHighScore != null) {
+  if (lastHighScore !== null) {
     highScores = lastHighScore;    
   }
   var scores = {
@@ -175,37 +174,55 @@ function saveHighScores () {
   }
   highScores.push(scores);
   localStorage.setItem('highScores', JSON.stringify(highScores));
+  renderHighScores();
+}
+
+
+
+function renderHighScores() {
+  // quizQuestionsEl.innerHTML = "";
+  // topHeader.innerHTML = "";
+  finalScoresScreen.removeAttribute("class");
+  // quizQuestionsEl.setAttribute("class", "hide");
+  var storedScores = JSON.parse(localStorage.getItem('highScores'));
+  if (storedScores !== null) {
+    highScores = storedScores;    
+  }
+
+  // if(storedScores !== null) {
+  //   highScores = storedScores
+  // }
+  console.log(highScores);
+
+  for (var i = 0; i < highScores.length; i++) {
+    var singleScore = highScores[i];
+    console.log(singleScore);
+    var li = document.createElement("li");
+    li.textContent = singleScore.initials + " - " + singleScore.score;
+    viewAllScoresList.appendChild(li);    
+  }
 }
 
 saveScoreButton.addEventListener("click", saveHighScores);
 
 
 
-//  var highScores = document.getElementById("quizEnd");
-
-
-
-// function displayMessage(){
-
-// }
-
-// function startGame(event){
-//   if(event.target.getAttribute("data-start") === "something"){
-
-//   }
-//     else{
-//       startGame.innerHTML = '';
-
-//       var beginTimer = [ ];
-//       event.target.setAttribute("data-start", )
-
-//     }
-// }
-
-
-
-// startButton.addEventListener('click', startQuiz);
 
 function goBack() {
   window.location.reload();
 }
+
+
+
+backBtn.addEventListener("click", goBack);
+
+
+clearBtn.addEventListener("click", clearLocalStorage);
+
+
+function clearLocalStorage() {
+  localStorage.clear();
+}
+
+
+headerScoresBtn.addEventListener("click", renderHighScores);

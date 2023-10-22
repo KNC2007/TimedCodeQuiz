@@ -53,9 +53,6 @@ h1, p {
     text-align: center;
 }
 
-/* #startScreen {
-
-} */
 
 /* start quiz button */
 #startQuiz {
@@ -78,7 +75,7 @@ h1, p {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-#viewHighScores {
+#viewHighScoresBtn {
     text-align: center;
     background-color: rgba(226, 78, 152, 0.527);
     font-size: larger;
@@ -127,31 +124,57 @@ h1, p {
     border-top: solid orangered 4px;
 }
 
-/* #finalScore {
-
-}
-
-
-#initials {
-
-}
-
 #saveScoreBtn {
-
+    text-align: center;
+    background-color: rgba(226, 78, 152, 0.527);
+    font-size: larger;
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    border: 2px solid;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom: 30px;
+    cursor: help;
+    width: 50%;
 }
 
-#timer {
-
+#initials [type=text] {
+    width: 30%;
+    padding: 12 px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }
 
-#quizEnd {
-
-} */
-
-/* #quizQuestions {
-
+#viewHighScoresList {
+    color: black;
+    padding: 3%;
+    text-align: center;
 }
 
-#fullQuestion {
+li {
+    color: black;
+    padding: 1%;
+    text-align: left;
+    background-color: lightgray;
+    font-size: larger;
+}
 
+#goBackButton, #clearHighScoresButton {
+    text-align: center;
+    background-color: rgba(226, 78, 152, 0.527);
+    font-size: larger;
+    display: block;
+    padding: 10px 25px;
+    text-decoration: none;
+    border: 2px solid;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom: 30px;
+    cursor: help;
+    width: 20%;
 }

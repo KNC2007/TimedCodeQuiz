@@ -18,7 +18,7 @@
             <header>
                 <div>
                     <!-- high scores -->
-                    <button id="viewHighScores">
+                    <button id="viewHighScoresBtn">
                         View High Scores
                     </button>
                 </div>
@@ -53,7 +53,7 @@
             <div class="hide" id="quizEnd">
                 <h1>All done!</h1>
                 <p>Your final score is: <span id="finalScore"></span></p>
-                <p>Enter initials: <input id="initials" type="text" maxlength="4" /></p>
+                <p>Enter initials: <input type="text" id="initials"/></p>
                 <button id="saveScoreBtn">Submit</button>
             </div>
 
@@ -61,6 +61,15 @@
 
         <section>
             <div class="hide"  id="rightOrWrong"></div>
+        </section>
+
+        <section>
+            <div class="hide" id="highScoresScreen">
+                <h1>High Scores</h1>
+                <ul id="viewHighScoresList"></ul>
+                <button id="goBackButton">Go back</button>
+                <button id="clearHighScoresButton">Clear high scores</button>
+            </div>
         </section>
 
 
